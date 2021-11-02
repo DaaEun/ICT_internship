@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+    <script type="text/javascript">
+
+
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(load_chart_data);
+
+
+        function load_chart_data() {
+            $.ajax({
+                url: 'smart_farm_json.php', // provide correct url
+                type: 'POST',
+                data: {get_chart: true},
+                dataType: 'JSON', // <-- since youre expecting JSON
+                success: function(chart_values) {
+                    console.log(chart_values); // take a peek on the values (browser console)
+                    draw_chart(chart_values); // call your drawing function!
+                }
+            });
+        }
+
+        function draw_chart(chart_values) {
+            var data = google.visualization.arrayToDataTable(chart_values);
+            var options = {
+                title: 'SMART FARM',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+
+         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+    </script>
+
+    <title>SMART_FARM</title>
+</head>
+<body>
+
+<div id="chart_div" style="width: 350px; height: 400px;"></div>
+
+
+
+</body>
+</html>
