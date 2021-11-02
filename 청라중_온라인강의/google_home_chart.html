@@ -1,0 +1,173 @@
+  <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+	  
+	  var getParam = function(key){
+	  	var _parammap = {};
+		document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function(){
+		
+			function decode(s){
+				return decodeURIComponent(s.split("+").join(" "));
+			}
+		
+		_parammap[decode(arguments[1])] = decode(arguments[2]);
+		
+		});
+		
+		return _parammap[key];
+	  };
+	  
+	  var t=0,t1=0,t2=0,t3=0,t4=0,t5=0,t6=0,t7=0,t8=0,t9=0;
+	  
+	  t = parseInt(getParam('t'));
+	  var h = parseInt(getParam('h'));
+	  
+	  t1 = parseInt(getParam('t1'));
+	  var h1 = parseInt(getParam('h1'));
+	  
+	  t2 = parseInt(getParam('t2'));
+	  var h2 = parseInt(getParam('h2'));
+	  
+	  t3 = parseInt(getParam('t3'));
+	  var h3 = parseInt(getParam('h3'));
+	  
+	  t4 = parseInt(getParam('t4'));
+	  var h4 = parseInt(getParam('h4'));
+	  
+	  t5 = parseInt(getParam('t5'));
+	  var h5 = parseInt(getParam('h5'));
+	  
+	  t6 = parseInt(getParam('t6'));
+	  var h6 = parseInt(getParam('h6'));
+	  
+	  t7 = parseInt(getParam('t7'));
+	  var h7 = parseInt(getParam('h7'));
+	  
+	  t8 = parseInt(getParam('t8'));
+	  var h8 = parseInt(getParam('h8'));
+	  
+	  t9 = parseInt(getParam('t9'));
+	  var h9 = parseInt(getParam('h9'));
+
+      function drawChart() {
+        var data;
+		
+		if(t9 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4],
+			[data, t5, h5],
+			[data, t6, h6],
+			[data, t7, h7],
+			[data, t8, h8],
+			[data, t9, h9]
+        	]);
+		}if(t8 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4],
+			[data, t5, h5],
+			[data, t6, h6],
+			[data, t7, h7],
+			[data, t8, h8]
+        	]);
+		}if(t7 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4],
+			[data, t5, h5],
+			[data, t6, h6],
+			[data, t7, h7]
+        	]);
+		}if(t6 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4],
+			[data, t5, h5],
+			[data, t6, h6]
+        	]);
+		}if(t5 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4],
+			[data, t5, h5]
+        	]);
+		}if(t4 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3],
+			[data, t4, h4]
+        	]);
+		}if(t3 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2],
+			[data, t3, h3]
+        	]);
+		}if(t2 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1],
+			[data, t2, h2]
+        	]);
+		}else if(t1 > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h],
+			[data, t1, h1]
+        	]);
+		}else if(t == 0 || t > 0){
+			data = google.visualization.arrayToDataTable([
+         	['Sensor', 'Temp', 'Humi'],
+			[data, t, h]
+        	]);
+		}else{
+			alert("Error!");
+		}
+		
+	
+        var options = {
+          title: 'SMART HOME',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+  </body>
+</html>
