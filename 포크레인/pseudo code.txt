@@ -1,0 +1,18 @@
+procedure poclain_func
+Motor_A, Motor_B1, Motor_B2, Motor_B3, Motor_B4, CAM on;
+
+start:
+While "Motor_B4" 작동시켜, CAM이 cube를 인식
+	"Motor_A" 작동;
+	"Motor_B3" Motor_B4가 움직인 각도만큼 작동; 
+	"Motor_B2" (집게~지평)거리만큼 down 작동; 	
+	"Motor_B1" 작동; 
+
+	If cube가 잡히지 않음	
+		goto start;
+
+	"Motor_B2" (집게~지평)거리만큼 up 작동; 
+	"Motor_A" 지나온 거리만큼 작동;
+	"Motor_B1" 작동; 
+
+Motor_A, Motor_B1, Motor_B2, Motor_B3, Motor_B4, CAM off;
